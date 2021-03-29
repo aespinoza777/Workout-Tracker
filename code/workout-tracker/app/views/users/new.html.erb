@@ -1,1 +1,30 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Sign Up Here</h1>
+<form action="/users" method="post">
+    <label for="email">Email Address</label>
+    <input type="email" name="email">
+
+    <label for="name">Full Name</label>
+    <input type="text" name="name">
+
+    <label for="username">User Name</label>
+    <input type="text" name="username">
+
+    <label for="age">Age</label>
+    <input type="number" name="age">
+    
+    <label for="male">Male</label>
+    <input type="radio" value="male" name="gender">
+
+    <label for="female">Female</label>
+    <input type="radio" value="female" name="gender">
+
+     <label for="password">Password</label>
+    <input type="password" name="password">
+
+    <label for="password_confirmation">Password Confirmation</label>
+    <input type="password" name="password_confirmation">
+
+    <input type="submit" value="Create Account">
+
+
+</form>

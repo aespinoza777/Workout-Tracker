@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   # GET: /users
   get "/users" do
+    @users = User.all
     erb :"/users/index.html"
   end
 
@@ -12,6 +13,8 @@ class UsersController < ApplicationController
 
   # POST: /users
   post "/users" do
+    user = User.create(email: params[:email], name: params[:name], username: params[:username], age: params[:age], gender: params[:gender], password: params[:password], password_confirmation: params[:password_confirmation])
+    session[:user_id] = user.id
     redirect "/users"
   end
 
@@ -33,5 +36,10 @@ class UsersController < ApplicationController
   # DELETE: /users/5/delete
   delete "/users/:id/delete" do
     redirect "/users"
+  end
+
+  get "/logout" do
+    session[:user_id] = nil
+    redirect "/users/new" 
   end
 end

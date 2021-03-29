@@ -15,7 +15,11 @@
   </head>
   <body>
     <div class="wrapper">
-
+        <% if logged_in? %>
+          <a href="/logout">Logout</a>
+        <% else %>
+          <a href="/users/new">Signup</a>
+        <% end %>
         <%= yield %>
 
       <footer class="branding">
