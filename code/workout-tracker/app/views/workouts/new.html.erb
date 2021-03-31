@@ -1,1 +1,17 @@
-<h1>Insert the form to create a new instance of your model.</h1>
+<h1>Workout Log</h1>
+
+<form action="/workouts" method="post">
+    <label for="name">Workout Type</label>
+    <input type="text" name="name">
+
+    <label for="yes">Yes</label>
+    <input type="radio" value="true" name="completed">
+
+    <label for="no">No</label>
+    <input type="radio" value="false" name="completed">
+
+    <label for="duration">Workout Duration</label>
+    <input type="text" name="duration">
+
+    <input type="submit" value="create">
+    </form>

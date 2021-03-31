@@ -1,1 +1,18 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>Edit Workout</h1>
+
+<form action="/workouts/<%= @workout.id %>" method="post">
+    <input type="hidden" name="_method" value="PATCH">
+    <label for="name">Workout Type</label>
+    <input type="text" name="name" value="<%= @workout.name %>">
+
+    <label for="yes">Yes</label>
+    <input type="radio" value="true" name="completed" <%= "checked" if @workout.completed%>>
+
+    <label for="no">No</label>
+    <input type="radio" value="false" name="completed"<%= "checked" if !@workout.completed%>>
+
+    <label for="duration">Workout Duration</label>
+    <input type="text" name="duration" value="<%= @workout.duration %>">
+
+    <input type="submit" value="Update">
+    </form>
