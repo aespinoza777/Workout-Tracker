@@ -1,1 +1,26 @@
-<h1>Insert the form to edit an instance of your model here.</h1>
+<h1>User Edit</h1>
+<form action="/users/<%= @user.id %>" method="post">
+     <input type="hidden" name="_method" value="PATCH">
+    <label for="email">Email Address</label>
+    <input type="email" value="<%= @user.email %>" name="email">
+
+    <label for="name">Full Name</label>
+    <input type="text" value="<%= @user.name%>" name="name">
+
+    <label for="username">User Name</label>
+    <input type="text" value="<%= @user.username%>" name="username">
+
+    <label for="age">Age</label>
+    <input type="number" value="<%= @user.age%>"  name="age">
+    
+    <label for="male">Male</label>
+    <input type="radio" value="male" name="gender" <%="checked" if @user.gender == "male"  %>>
+
+    <label for="female">Female</label>
+    <input type="radio" value="female" name="gender" <%="checked" if @user.gender == "female"%> >
+   
+
+    <input type="submit" value="Update Account">
+
+
+</form>

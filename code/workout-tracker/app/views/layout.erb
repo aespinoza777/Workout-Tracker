@@ -20,6 +20,7 @@
           <a href="/logout">Logout</a>
           <a href="/workouts/new">Create Workout</a>
           <a href="/workouts">My Workout</a>
+          <a href="/users/<%= current_user.id %>">Profile</a>
         <% else %>
           <a href="/users/new">Signup</a>
           <a href="/login">Login</a>

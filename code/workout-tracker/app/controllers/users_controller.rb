@@ -25,22 +25,36 @@ class UsersController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
-    erb :"/users/show.html"
+    @user = User.find(params[:id])
+    if current_user == @user
+      erb :"/users/show.html"
+    else 
+      redirect "/users/#{current_user.id}"
+    end
   end
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    @user = User.find(params[:id])
     erb :"/users/edit.html"
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
-    redirect "/users/:id"
+    user = User.find(params[:id])
+    user.update(email: params[:email], name: params[:name], username: params[:username], age: params[:age], gender: params[:gender])
+    redirect "/users/#{user.id}"
   end
 
   # DELETE: /users/5/delete
-  delete "/users/:id/delete" do
-    redirect "/users"
+  delete "/users/:id" do
+    redirect_if_not_logged_in
+    user = User.find(params[:id])
+    if current_user == user
+      session[:user_id] = nil
+      user.destroy
+    end
+    redirect "/users/new"
   end
 
   get "/logout" do
