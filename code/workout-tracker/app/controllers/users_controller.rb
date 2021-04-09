@@ -25,6 +25,7 @@ class UsersController < ApplicationController
 
   # GET: /users/5
   get "/users/:id" do
+    redirect_if_not_logged_in
     @user = User.find(params[:id])
     if current_user == @user
       erb :"/users/show.html"
@@ -35,16 +36,25 @@ class UsersController < ApplicationController
 
   # GET: /users/5/edit
   get "/users/:id/edit" do
+    redirect_if_not_logged_in
     @user = User.find(params[:id])
-    erb :"/users/edit.html"
+    if current_user == @user
+      erb :"/users/edit.html"
+    else
+      redirect "/users/#{current_user.id}/edit"
+    end 
   end
 
   # PATCH: /users/5
   patch "/users/:id" do
+    redirect_if_not_logged_in
     user = User.find(params[:id])
-    user.update(email: params[:email], name: params[:name], username: params[:username], age: params[:age], gender: params[:gender])
-    redirect "/users/#{user.id}"
+    if current_user == user
+      user.update(email: params[:email], name: params[:name], username: params[:username], age: params[:age], gender: params[:gender])
+    end
+    redirect "/users/#{current_user.id}"
   end
+  
 
   # DELETE: /users/5/delete
   delete "/users/:id" do
