@@ -13,6 +13,12 @@ class WorkoutsController < ApplicationController
     erb :"/workouts/new.html"
   end
 
+  get "/workouts/all" do
+    redirect_if_not_logged_in
+    @workouts = Workout.all
+    erb :"/workouts/all.html"
+end
+
   # POST: /workouts
   post "/workouts" do
     redirect_if_not_logged_in

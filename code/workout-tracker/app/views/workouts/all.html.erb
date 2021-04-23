@@ -1,0 +1,6 @@
+<h1>Users Workouts</h1>
+<% @workouts.each do |workout| %>
+    <p>Name: <%= workout.name %></p>
+    <p>Duration: <%= workout.duration %></p>
+    <p>------------------------------</p>
+<% end %>
